@@ -9,14 +9,15 @@ import thegreychain.springframework.spring5webapp.repositories.BookRepository;
 @Controller
 public class BookController {
 
-   private BookRepository bookRepository;
+    private BookRepository bookRepository;
 
     public BookController(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    @RequestMapping
+    @RequestMapping("/books")
     public String getBooks(Model model){
+
         model.addAttribute("books", bookRepository.findAll());
 
         return "books";
